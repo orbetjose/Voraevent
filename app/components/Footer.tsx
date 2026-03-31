@@ -6,7 +6,7 @@ export default function Footer() {
   return (
     <footer
       className="py-8 bg-cover bg-center bg-no-repeat"
-      style={{ backgroundImage: 'url("http://admin.voraevents.com/wp-content/uploads/2026/03/bg-footer-scaled.png")' }}>
+      style={{ backgroundImage: 'url("https://admin.voraevents.com/wp-content/uploads/2026/03/bg-footer-scaled.png")' }}>
       <div className="flex flex-col md:flex-row justify-between md:max-w-4xl mx-auto">
         <div className="pb-8 md:pb-0">
           <Image
