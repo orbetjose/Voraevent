@@ -1,6 +1,6 @@
-
 import Image from "next/image";
 import Gallery from "./components/Gallery";
+import ContactForm from "./components/ContactForm";
 
 export default function Home() {
   const currentDomain = process.env.NEXT_PUBLIC_WP_DOMAIN;
@@ -47,12 +47,12 @@ export default function Home() {
     },
   ];
   const images = [
-    { src: `${currentDomain}wp-content/uploads/2026/03/galeria-1.png`, width: 320, height: 212, alt:"text" },
-    { src: `${currentDomain}wp-content/uploads/2026/03/galeria-2.png`, width: 320, height: 212, alt:"text" },
-    { src: `${currentDomain}wp-content/uploads/2026/03/galeria-3.png`, width: 320, height: 212, alt:"text" },
-    { src: `${currentDomain}wp-content/uploads/2026/03/galeria-4.png`, width: 320, height: 212, alt:"text" },
-    { src: `${currentDomain}wp-content/uploads/2026/03/galeria-5.png`, width: 320, height: 212, alt:"text" },
-    { src: `${currentDomain}wp-content/uploads/2026/03/galeria-6.png`, width: 320, height: 212, alt:"text" },
+    { src: `${currentDomain}wp-content/uploads/2026/03/galeria-1.png`, width: 320, height: 212, alt: "text" },
+    { src: `${currentDomain}wp-content/uploads/2026/03/galeria-2.png`, width: 320, height: 212, alt: "text" },
+    { src: `${currentDomain}wp-content/uploads/2026/03/galeria-3.png`, width: 320, height: 212, alt: "text" },
+    { src: `${currentDomain}wp-content/uploads/2026/03/galeria-4.png`, width: 320, height: 212, alt: "text" },
+    { src: `${currentDomain}wp-content/uploads/2026/03/galeria-5.png`, width: 320, height: 212, alt: "text" },
+    { src: `${currentDomain}wp-content/uploads/2026/03/galeria-6.png`, width: 320, height: 212, alt: "text" },
   ];
 
   return (
@@ -62,14 +62,16 @@ export default function Home() {
           <Image
             src={`${currentDomain}wp-content/uploads/2026/03/hero-banner.png`}
             alt="Hero banner"
-            className="h-[85vh] w-full object-cover object-left md:object-center absolute"
+            className="h-[85vh] w-full object-cover object-center absolute"
             width={1920}
             height={910}
             loading="eager"
           />
         </div>
       </section>
-      <section className="bg-primary-red py-12 relative overflow-hidden" id="quienes-somos">
+      <section
+        className="bg-primary-red py-12 relative overflow-hidden"
+        id="quienes-somos">
         <div className="flex flex-col md:flex-row items-center text-white md:max-w-5xl mx-auto px-4 md:px-0 pb-16">
           <div className="font-medium flex-1">
             <h2 className="md:text-5xl text-3xl pb-2 md:pb-0">¿Quienes somos?</h2>
@@ -116,7 +118,9 @@ export default function Home() {
           height={203}
         />
       </section>
-      <section className="bg-primary-mustard py-12 relative overflow-hidden" id="servicios">
+      <section
+        className="bg-primary-mustard py-12 relative overflow-hidden"
+        id="servicios">
         <div className="flex flex-col md:flex-row items-center text-white md:max-w-5xl mx-auto px-4 md:px-0 gap-8">
           <div className="flex-1">
             <h3 className="font-medium md:text-4xl pb-2 text-3xl">Servicios</h3>
@@ -214,10 +218,13 @@ export default function Home() {
           ))}
         </div>
       </section>
-      <section className="" id="galeria">
+      <section
+        className=""
+        id="galeria">
         <h2 className="text-primary-green text-2xl md:text-3xl text-center font-medium">Galería</h2>
         <Gallery images={images} />
       </section>
+      <ContactForm />
     </main>
   );
 }

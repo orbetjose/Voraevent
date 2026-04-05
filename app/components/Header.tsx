@@ -12,7 +12,6 @@ export default function Header() {
   const router = useRouter();
   const pathname = usePathname();
 
-
   useEffect(() => {
     getMenuInfo("navbar")
       .then((data) => setMenuItems(data))
@@ -106,7 +105,7 @@ export default function Header() {
                   id="mobile-menu"
                   className="items-center justify-center md:hidden text-sm  gap-4 fancy-menu uppercase font-demibold text-black">
                   {menuItems.map((item, index) => {
-                    let namesSections = item.name.toLowerCase();
+                    let namesSections = item.name.replace(" ", "-").toLowerCase();
                     return (
                       <li key={index}>
                         <button
