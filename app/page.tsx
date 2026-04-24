@@ -1,8 +1,28 @@
+"use client";
+
 import Image from "next/image";
 import Gallery from "./components/Gallery";
 import ContactForm from "./components/ContactForm";
+import { useEffect, useState } from "react";
+
+type WordPressPageResponse = {
+  acf: {
+    galeria_imagenes: {
+      imagen_1: { url: string };
+      imagen_2: { url: string };
+      imagen_3: { url: string };
+      imagen_4: { url: string };
+      imagen_5: { url: string };
+      imagen_6: { url: string };
+    };
+  };
+  title: {
+    rendered: string;
+  };
+}[];
 
 export default function Home() {
+  const [GalleryImages, setGalleryImages] = useState<WordPressPageResponse[0] | null>(null);
   const currentDomain = process.env.NEXT_PUBLIC_WP_DOMAIN;
   const itemsServices = [
     {
@@ -54,6 +74,17 @@ export default function Home() {
     { src: `${currentDomain}wp-content/uploads/2026/03/galeria-5.png`, width: 320, height: 212, alt: "text" },
     { src: `${currentDomain}wp-content/uploads/2026/03/galeria-6.png`, width: 320, height: 212, alt: "text" },
   ];
+
+  useEffect(() => {
+    const fetchGallery = async () => {
+      const response = await fetch(`${currentDomain}wp-json/wp/v2/pages?slug="inicio"&_fields=acf,title`);
+      if (!response.ok) throw new Error("Failed to fetch page info");
+      const gallery: WordPressPageResponse = await response.json();
+      setGalleryImages(gallery[0]);
+    };
+
+    fetchGallery();
+  }, []);
 
   return (
     <main className="">
@@ -113,9 +144,10 @@ export default function Home() {
         <Image
           src={`${currentDomain}wp-content/uploads/2026/03/decoration1.png`}
           alt="Decoracion 1"
-          className="absolute -left-16 bottom-0 h-30 object-contain"
+          className="absolute -left-6 bottom-0 h-30 object-contain"
           width={210}
           height={203}
+          style={{width: 'auto'}}
         />
       </section>
       <section
@@ -176,9 +208,10 @@ export default function Home() {
           <Image
             src={`${currentDomain}wp-content/uploads/2026/03/decoration2.png`}
             alt="Decoration 2"
-            className="absolute top-0 right-130 translate-x-1/2 h-40 object-contain"
+            className="absolute top-0 right-130 translate-x-1/2 h-40 object-contain hidden lg:block"
             width={299}
             height={295}
+            style={{width: 'auto'}}
           />
           <Image
             src={`${currentDomain}wp-content/uploads/2026/03/decoration5.png`}
@@ -206,7 +239,11 @@ export default function Home() {
                 <span className="text-primary-pink font-demibold text-xl">{item.titulo}</span>
                 <div className="mt-2">{item.descripcion}</div>
                 <div className="flex items-center gap-2 text-white bg-primary-pink rounded-full px-2 w-fit mt-2">
-                  <a href="#">Contactar</a>
+                  <a
+                    href="https://api.whatsapp.com/send/?phone=573227893394&text&type=phone_number&app_absent=0"
+                    target="_blank">
+                    Contactar
+                  </a>
                   <img
                     className="h-3"
                     src={`${currentDomain}wp-content/uploads/2026/03/arrow-right.png`}
@@ -222,7 +259,7 @@ export default function Home() {
         className=""
         id="galeria">
         <h2 className="text-primary-green text-2xl md:text-3xl text-center font-medium">Galería</h2>
-        <Gallery images={images} />
+        {GalleryImages && <Gallery acf={GalleryImages.acf} />}
       </section>
       <ContactForm />
     </main>

@@ -69,10 +69,10 @@ export default function ContactForm() {
                 alt="Icono whatsapp"
               />
               <a
-                href="#"
+                href="https://api.whatsapp.com/send/?phone=573227893394&text&type=phone_number&app_absent=0"
                 target="_blank"
                 className="text-lg">
-                321 439 2546
+                322 789 3394
               </a>
             </div>
             <div className="flex gap-4 items-center justify-center md:justify-start">

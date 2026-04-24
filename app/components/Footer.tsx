@@ -6,7 +6,9 @@ export default function Footer() {
   return (
     <footer
       className="py-8 bg-cover bg-center bg-no-repeat"
-      style={{ backgroundImage: 'url("https://admin.voraevents.com/wp-content/uploads/2026/03/bg-footer-scaled.png")' }}>
+      style={{
+        backgroundImage: 'url("https://admin.voraevents.com/wp-content/uploads/2026/03/bg-footer-scaled.png")',
+      }}>
       <div className="flex flex-col md:flex-row justify-between md:max-w-4xl mx-auto">
         <div className="pb-8 md:pb-0">
           <Image
@@ -24,16 +26,22 @@ export default function Footer() {
               className="h-6"
               alt=""
             />
-            <a href="#" className="font-medium text-white text-lg">321 439 2546</a>
+            <a
+              href="https://api.whatsapp.com/send/?phone=573227893394&text&type=phone_number&app_absent=0"
+              target="_blank"
+              className="font-medium text-white text-lg">
+              322 789 3394
+            </a>
           </div>
           <div className="flex items-center gap-6">
-            <a href="#">
+            <a href="https://www.instagram.com/vora_events/">
               <img
                 src={`${currentDomain}wp-content/uploads/2026/03/ico-instagram.png`}
                 className="h-6"
                 alt=""
               />
             </a>
+            {/* This is a comment in JSX 
             <a href="#">
               <img
                 src={`${currentDomain}wp-content/uploads/2026/03/ico-yt.png`}
@@ -48,7 +56,8 @@ export default function Footer() {
                 alt=""
               />
             </a>
-            <a href="#">
+            */}
+            <a href="https://www.tiktok.com/@vora_events">
               <img
                 src={`${currentDomain}wp-content/uploads/2026/03/ico-tiktok.png`}
                 className="h-6"
